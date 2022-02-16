@@ -1016,7 +1016,7 @@ define .release.y_link
 $3: $2/$1
 $(if $(phony-upd),$(eval .PHONY: $2/$1))
 $2/$1: $(WORKDIR.lib)/$1 | $2/.
-	cp -fp $(WORKDIR.lib)/$1 $2/$(subst .$y,$(y_full_name_postfix),$1) && cd $2 && ln -sf $(subst .$y,$(y_full_name_postfix),$1) $(subst .$y,$(y_major_name_postfix),$1) && ln -sf $(subst .$y,$(y_major_name_postfix),$1) $1
+	cp -fp $(WORKDIR.lib)/$1 $2/$(subst .$y,$(y_full_name_postfix),$1) && cd $2 && echo "INPUT($(subst .$y,$(y_full_name_postfix),$1))" > $(subst .$y,$(y_major_name_postfix),$1) && echo "INPUT($(subst .$y,$(y_major_name_postfix),$1))" > $1
 endef
 define .release.a
 $3: $2/$1
